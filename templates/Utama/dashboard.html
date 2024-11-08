@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+                <div class="gap">
+                    <h1 class="padding-bottom">Sistem pengambilan keputusan</h1>
+                    <h1 class="padding-top">Pembelian saham Indonesia</h1>
+                </div>
+                <div class="nav">
+                
+                </div>
+                    
+
+            </div>
+            
+        </div>
+    </header>
+   
+    <div class="container">
+
+        <h1></h1>
+        <a href="{{ url_for('perhitungan') }}" class="button">halaman perhitungan saham</a>
+        <a href="{{ url_for('editSaham') }}" class="button">halaman edit daftar saham</a>
+        <a href="{{ url_for('edit') }}" class="button">halaman edit Profile daftar saham</a>
+        <a href="{{ url_for('riwayat') }}" class="button">lihat daftar saham saat ini</a>
+        
+    </div>
+</body>
+</html>

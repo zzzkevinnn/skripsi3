@@ -1,0 +1,42 @@
+[
+    {
+        "roc": 124.69135802469135,
+        "kode_saham": "ARGO.JK",
+        "harga_hari_ini": 1820.0,
+        "harga_awal": 810.0,
+        "rata_rata": 970.1396648044692,
+        "link_saham": "https://finance.yahoo.com/quote/ARGO.JK"
+    },
+    {
+        "roc": 1135.6687898089172,
+        "kode_saham": "FORU.JK",
+        "harga_hari_ini": 1940.0,
+        "harga_awal": 157.0,
+        "rata_rata": 780.3651685393259,
+        "link_saham": "https://finance.yahoo.com/quote/FORU.JK"
+    },
+    {
+        "roc": 6680.0,
+        "kode_saham": "KARW.JK",
+        "harga_hari_ini": 3390.0,
+        "harga_awal": 50.0,
+        "rata_rata": 399.43575418994413,
+        "link_saham": "https://finance.yahoo.com/quote/KARW.JK"
+    },
+    {
+        "roc": 918.867924528302,
+        "kode_saham": "LABA.JK",
+        "harga_hari_ini": 540.0,
+        "harga_awal": 53.0,
+        "rata_rata": 117.17877094972067,
+        "link_saham": "https://finance.yahoo.com/quote/LABA.JK"
+    },
+    {
+        "roc": 109.14634146341464,
+        "kode_saham": "SINI.JK",
+        "harga_hari_ini": 1715.0,
+        "harga_awal": 820.0,
+        "rata_rata": 880.586592178771,
+        "link_saham": "https://finance.yahoo.com/quote/SINI.JK"
+    }
+]

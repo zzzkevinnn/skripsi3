@@ -1,0 +1,185 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: rgb(0, 187, 255);
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+    text-align: center;
+    padding-bottom: 3% ;
+}
+.nav {
+    color: black;
+    display: flex;
+}
+
+.gap{
+    margin-bottom: 0;
+    padding-top: 0;
+}
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+/* form {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px #000000;
+} */
+
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* button {
+    width: 50%;
+    background-color: #50b3a2;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 2px;
+   
+} */
+.margin-top{
+  margin-top: 5px;
+}
+.button1
+{
+    width: 10%;
+  
+   
+}
+.normal{
+    background-color: white; /* Green background */
+    border: none;              /* Remove borders */
+    color: white;              /* White text */
+    padding: 10px 20px;        /* Some padding */
+    text-align: center;        /* Centered text */
+    text-decoration: none;     /* Remove underline */
+    display: inline-block;     /* Inline-block display */
+    font-size: 16px;           /* Increase font size */
+    margin: 4px 2px;           /* Some margin */
+    cursor: pointer;           /* Pointer/hand icon */
+    border-radius: 4px;        /* Rounded corners */
+   
+}
+.flex{
+    display: flex;
+}
+
+.button {
+    width: 100%;
+    background-color: #50b3a2;
+    color: white;
+    padding: 48px 0;
+    margin: 30px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    
+    
+}
+.button2 {
+    width: 50%;
+    background-color: #50b3a2;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 2px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+     
+}
+.button3 {
+    width: 90%;
+    background-color: #50b3a2;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 2px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    
+}
+.button:hover {
+    background-color: hsl(123, 40%, 45%);
+}
+
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.stock {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.vertikal{
+    display: block;
+}
+
+.login{
+    background-color: rgb(0, 200, 255);
+    display: flex;
+    height: 50vh;
+    margin-top: 100px;
+    width: 800px;
+}

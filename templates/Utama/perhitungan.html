@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container ">
+            <h1>Halaman perhitungan</h1>
+        </div>
+    </header>
+    <div class="container header1 py-3">
+        <form method="POST">
+            <label for="minggu">Berapa Minggu:</label>
+            <input type="number" id="minggu" name="minggu" required>
+
+           
+            
+            <label for="min_roc">Min ROC:</label>
+            <input type="number" id="min_roc" name="min_roc" required>
+
+           
+            
+            <label for="min_mean">Min mean:</label>
+            <input type="number" id="min_mean" name="min_mean" required>
+
+            
+            <div class="flex"> 
+                <button type="submit" class="btn btn-success button2" >Submit</button>
+                <a href="{{ url_for('dashboard') }}" class="button2">Kembali</a>
+            </div>
+            
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
