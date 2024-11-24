@@ -1,0 +1,27 @@
+{
+    "Tech Stocks": [
+        {
+            "symbol": "AAPL",
+            "name": "Apple Inc.",
+            "price": 175.12
+        },
+        {
+            "symbol": "GOOGL",
+            "name": "Alphabet Inc.",
+            "price": 2845.5
+        }
+    ],
+    "Energy Stocks": [
+        {
+            "symbol": "XOM",
+            "name": "Exxon Mobil Corporation",
+            "price": 105.75
+        },
+        {
+            "symbol": "CVX",
+            "name": "Chevron Corporation",
+            "price": 162.3
+        }
+    ],
+    "asdad": []
+}

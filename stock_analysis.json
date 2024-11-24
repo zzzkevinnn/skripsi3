@@ -1,42 +1,114 @@
 [
     {
-        "roc": 124.69135802469135,
-        "kode_saham": "ARGO.JK",
-        "harga_hari_ini": 1820.0,
-        "harga_awal": 810.0,
-        "rata_rata": 970.1396648044692,
-        "link_saham": "https://finance.yahoo.com/quote/ARGO.JK"
+        "roc": 176.0,
+        "kode_saham": "DWGL.JK",
+        "harga_hari_ini": 276.0,
+        "harga_awal": 100.0,
+        "rata_rata": 122.8989898989899,
+        "link_saham": "https://finance.yahoo.com/quote/DWGL.JK"
     },
     {
-        "roc": 1135.6687898089172,
-        "kode_saham": "FORU.JK",
-        "harga_hari_ini": 1940.0,
-        "harga_awal": 157.0,
-        "rata_rata": 780.3651685393259,
-        "link_saham": "https://finance.yahoo.com/quote/FORU.JK"
+        "roc": 265.7718120805369,
+        "kode_saham": "FMII.JK",
+        "harga_hari_ini": 545.0,
+        "harga_awal": 149.0,
+        "rata_rata": 235.010101010101,
+        "link_saham": "https://finance.yahoo.com/quote/FMII.JK"
     },
     {
-        "roc": 6680.0,
-        "kode_saham": "KARW.JK",
-        "harga_hari_ini": 3390.0,
-        "harga_awal": 50.0,
-        "rata_rata": 399.43575418994413,
-        "link_saham": "https://finance.yahoo.com/quote/KARW.JK"
+        "roc": 141.7910447761194,
+        "kode_saham": "GPSO.JK",
+        "harga_hari_ini": 324.0,
+        "harga_awal": 134.0,
+        "rata_rata": 145.5050505050505,
+        "link_saham": "https://finance.yahoo.com/quote/GPSO.JK"
     },
     {
-        "roc": 918.867924528302,
-        "kode_saham": "LABA.JK",
-        "harga_hari_ini": 540.0,
-        "harga_awal": 53.0,
-        "rata_rata": 117.17877094972067,
-        "link_saham": "https://finance.yahoo.com/quote/LABA.JK"
+        "roc": 144.0,
+        "kode_saham": "HOMI.JK",
+        "harga_hari_ini": 366.0,
+        "harga_awal": 150.0,
+        "rata_rata": 223.1010101010101,
+        "link_saham": "https://finance.yahoo.com/quote/HOMI.JK"
     },
     {
-        "roc": 109.14634146341464,
-        "kode_saham": "SINI.JK",
-        "harga_hari_ini": 1715.0,
-        "harga_awal": 820.0,
-        "rata_rata": 880.586592178771,
-        "link_saham": "https://finance.yahoo.com/quote/SINI.JK"
+        "roc": 313.11475409836066,
+        "kode_saham": "INPC.JK",
+        "harga_hari_ini": 252.0,
+        "harga_awal": 61.0,
+        "rata_rata": 84.22222222222223,
+        "link_saham": "https://finance.yahoo.com/quote/INPC.JK"
+    },
+    {
+        "roc": 350.0,
+        "kode_saham": "JIHD.JK",
+        "harga_hari_ini": 1395.0,
+        "harga_awal": 310.0,
+        "rata_rata": 470.80808080808083,
+        "link_saham": "https://finance.yahoo.com/quote/JIHD.JK"
+    },
+    {
+        "roc": 410.23017902813297,
+        "kode_saham": "JSPT.JK",
+        "harga_hari_ini": 9975.0,
+        "harga_awal": 1955.0,
+        "rata_rata": 2938.282828282828,
+        "link_saham": "https://finance.yahoo.com/quote/JSPT.JK"
+    },
+    {
+        "roc": 532.1428571428571,
+        "kode_saham": "KLIN.JK",
+        "harga_hari_ini": 177.0,
+        "harga_awal": 28.0,
+        "rata_rata": 56.09090909090909,
+        "link_saham": "https://finance.yahoo.com/quote/KLIN.JK"
+    },
+    {
+        "roc": 1017.6470588235294,
+        "kode_saham": "MTSM.JK",
+        "harga_hari_ini": 760.0,
+        "harga_awal": 68.0,
+        "rata_rata": 161.93939393939394,
+        "link_saham": "https://finance.yahoo.com/quote/MTSM.JK"
+    },
+    {
+        "roc": 500.0,
+        "kode_saham": "NINE.JK",
+        "harga_hari_ini": 30.0,
+        "harga_awal": 5.0,
+        "rata_rata": 9.484848484848484,
+        "link_saham": "https://finance.yahoo.com/quote/NINE.JK"
+    },
+    {
+        "roc": 200.88495575221236,
+        "kode_saham": "PNSE.JK",
+        "harga_hari_ini": 1360.0,
+        "harga_awal": 452.0,
+        "rata_rata": 511.74747474747477,
+        "link_saham": "https://finance.yahoo.com/quote/PNSE.JK"
+    },
+    {
+        "roc": 175.13227513227514,
+        "kode_saham": "SMDM.JK",
+        "harga_hari_ini": 520.0,
+        "harga_awal": 189.0,
+        "rata_rata": 446.47474747474746,
+        "link_saham": "https://finance.yahoo.com/quote/SMDM.JK"
+    },
+    {
+        "roc": 986.0215053763441,
+        "kode_saham": "SONA.JK",
+        "harga_hari_ini": 10100.0,
+        "harga_awal": 930.0,
+        "rata_rata": 3689.4949494949497,
+        "link_saham": "https://finance.yahoo.com/quote/SONA.JK"
+    },
+    {
+        "roc": 350.0,
+        "kode_saham": "TAXI.JK",
+        "harga_hari_ini": 9.0,
+        "harga_awal": 2.0,
+        "rata_rata": 4.353535353535354,
+        "link_saham": "https://finance.yahoo.com/quote/TAXI.JK"
     }
 ]
