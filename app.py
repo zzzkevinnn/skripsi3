@@ -4,15 +4,28 @@ import yfinance as yf
 import json
 from datetime import datetime, timedelta
 import os
+import math
 
 app = Flask(__name__)
 
-PROFILE_DIR = "."  # Direktori tempat file JSON sejajar dengan app.py
+
 
 # HALAMAN UTAMA 
 @app.route('/dashboard')
 def dashboard():
     return render_template('/Utama/dashboard.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    return render_template('/login.html')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('/register.html')
+
+
 
 DATA_FILE = 'notes.json'
 
@@ -30,104 +43,48 @@ def write_notes(notes):
 # -------------------------------------------------------------
 # Halaman utama untuk menampilkan semua catatan
 
-# Fungsi untuk menyimpan data profil
-def load_profile(profile_name):
-    file_path = os.path.join(PROFILE_DIR, f"{profile_name}.json")
-    if not os.path.exists(file_path):
-        return []  # Kembalikan daftar kosong jika file tidak ditemukan
-    with open(file_path, 'r') as f:
-        return json.load(f)
-    
-def save_profile(profile_name, stocks):
-    file_path = os.path.join(PROFILE_DIR, f"{profile_name}.json")
-    with open(file_path, 'w') as f:
-        json.dump(stocks, f, indent=4)
 
-# Fungsi untuk mendapatkan daftar profil (file JSON)
-def list_profiles():
-    files = os.listdir(PROFILE_DIR)
-    return [os.path.splitext(file)[0] for file in files if file.endswith('.json')]
-# baru ----------------------------------------------------------------
-@app.route('/create_profile', methods=['POST'])
-def create_profile():
-    profile_name = request.form['profile_name']
-    file_path = os.path.join(PROFILE_DIR, f"{profile_name}.json")
-
-    if os.path.exists(file_path):
-        return "Profile already exists!", 400  # Jika profil sudah ada
-
-    # Membuat file baru untuk profil
-    save_profile(profile_name, [])
-    return redirect(url_for('index'))
-
-# ----------------------------------------------------------------p
-
-# Menambah catatan baru
-@app.route('/add', methods=['GET', 'POST'])
-def add_note():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        notes = read_notes()
-        note = {
-            "id": len(notes) + 1,
-            "title": title,
-            "content": content
-        }
-        notes.append(note)
-        write_notes(notes)
-        return redirect(url_for('index'))
-    return render_template('add_note.html')
+def load_json():
+    with open('test.json', 'r') as file:
+        return json.load(file)
 
 
-# Mengedit catatan
-@app.route('/edit/<int:note_id>', methods=['GET', 'POST'])
-def edit_note(note_id):
-    notes = read_notes()
-    note = next((note for note in notes if note['id'] == note_id), None)
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        if note:
-            note['title'] = title
-            note['content'] = content
-            write_notes(notes)
-        return redirect(url_for('index'))
-    return render_template('edit_note.html', note=note)
 
-# Menghapus catatan
-@app.route('/delete/<int:note_id>', methods=['POST'])
-def delete_note(note_id):
-    notes = read_notes()
-    notes = [note for note in notes if note['id'] != note_id]
-    write_notes(notes)
-    return redirect(url_for('index'))
+# sssssssssssssssssssssssssssssssssssssssss
+def get_stock_details(codes):
+    stock_data = []
+    for code in codes:
+        stock = yf.Ticker(code)
+        info = stock.info
+        stock_data.append({
+            "code": code,
+            "name": info.get("longName", "N/A"),
+            "price": info.get("currentPrice", "N/A"),
+        })
+    return stock_data
+
 
 
 # -----------------------------------------------
+
+PROFILE_DIR = "./json_file/"  # Direktori tempat file JSON sejajar dengan app.py
+
+def list_profiles():
+    files = os.listdir(PROFILE_DIR)
+    return [os.path.splitext(file)[0] for file in files if file.endswith('.json')]
 @app.route('/edit', methods=['GET', 'POST'])
+
+
 def edit():
     with open('list-1.json') as file:
         stocks = json.load(file)
 
     
-    data = load_data()
-    if request.method == 'POST':
-        new_stock = request.form.get('new_stock')
-        delete_stock = request.form.get('delete_stock')
-
-        # Add new stock symbol
-        if new_stock:
-            if new_stock not in stocks:
-                stocks.append(new_stock)
-
-        # Delete selected stock symbol
-        if delete_stock:
-            if delete_stock in stocks:
-                stocks.remove(delete_stock)
     profiles = list_profiles()
                 
     return render_template('/edit.html', stocks=stocks, profiles=profiles)
+
+
 
 
 
@@ -145,101 +102,10 @@ def save_data(data):
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=4)
 
-# Route untuk halaman utama
-@app.route("/index")
-def index():
-    data = load_data()
-    return render_template("index.html", profiles=data)
-
-# Route untuk menampilkan profil
-@app.route("/profile/<profile_name>")
-def profile(profile_name):
-    data = load_data()
-    profile_data = data.get(profile_name, [])
-    return render_template("profile.html", profile_name=profile_name, stocks=profile_data)
-
-# Route untuk menambahkan saham
-@app.route("/profile/<profile_name>/add", methods=["POST"])
-def add_stock(profile_name):
-    symbol = request.form.get("symbol")
-    data = load_data()
-    
-    # Ambil data saham dari Yahoo Finance
-    try:
-        stock = yf.Ticker(symbol)
-        stock_info = stock.info
-        stock_data = {
-            "symbol": symbol,
-            "name": stock_info.get("longName", "Unknown"),
-            "price": stock_info.get("regularMarketPrice", 0),
-        }
-        data.setdefault(profile_name, []).append(stock_data)
-        save_data(data)
-        return redirect(url_for("profile", profile_name=profile_name))
-    except Exception as e:
-        return f"Error fetching stock data: {e}"
-
-# Route untuk menghapus saham
-@app.route("/profile/<profile_name>/delete/<symbol>")
-def delete_stock(profile_name, symbol):
-    data = load_data()
-    profile_data = data.get(profile_name, [])
-    data[profile_name] = [stock for stock in profile_data if stock["symbol"] != symbol]
-    save_data(data)
-    return redirect(url_for("profile", profile_name=profile_name))
-
-# Route untuk mengedit saham
-@app.route("/profile/<profile_name>/edit/<symbol>", methods=["GET", "POST"])
-def edit_stock(profile_name, symbol):
-    data = load_data()
-    profile_data = data.get(profile_name, [])
-    stock = next((s for s in profile_data if s["symbol"] == symbol), None)
-    
-    if request.method == "POST":
-        stock["name"] = request.form.get("name")
-        stock["price"] = float(request.form.get("price"))
-        save_data(data)
-        return redirect(url_for("profile", profile_name=profile_name))
-    
-    return render_template("edit_stock.html", profile_name=profile_name, stock=stock)
-
-@app.route("/add_profile", methods=["POST"])
-def add_profile():
-    profile_name = request.form.get("new_profile").strip()
-    if not profile_name:
-        return redirect(url_for("index"))  # Jika nama kosong, kembali ke halaman utama
-    
-    data = load_data()
-    if profile_name not in data:
-        data[profile_name] = []  # Tambahkan profil baru sebagai array kosong
-        save_data(data)
-    
-    return redirect(url_for("index"))
-
-# d-----------------------------------------------------------------------------------------
-@app.route("/profile/<profile_name>")
-def profiles(profile_name):
-    data = load_data()
-    profile_data = data.get(profile_name, [])
-    return render_template("profile.html", profile_name=profile_name, stocks=profile_data)
 
 
 
-@app.route('/editProfileSaham', methods=['POST'])
-def editProfileSaham():
-    
-    return  render_template('/editProfileSaham.html')
 
-
-@app.route('/', methods=['GET', 'POST'])
-def login():
-
-    return render_template('/login.html')
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-
-    return render_template('/register.html')
 # EDITING SAHAM -------------------------------------------------------------------------------------------------------------------------------------------
 
 @app.route('/Edit/editSaham', methods=['GET', 'POST'])
@@ -267,15 +133,27 @@ def editSaham():
             json.dump(stocks, file)
 
     return render_template('/Edit/editSaham.html', stocks=stocks)
+
 # PERHITUNGAN  -------------------------------------------------------------------------------------------------------------------------------------------
 @app.route('/perhitungan', methods=['GET', 'POST'])
 def perhitungan():
     if request.method == 'POST':
-        minggu = int(request.form.get('minggu'))
-        min_roc = float(request.form.get('min_roc'))
-        min_mean = float(request.form.get('min_mean'))
+        hari = int(request.form.get('hari'))
+        minimal_roc = float(request.form.get('minimal_roc'))
+
         end_date = datetime.now()
-        start_date = end_date - timedelta(weeks=minggu)
+        start_date = end_date - timedelta(days=hari)
+        minimal_volume = int(request.form.get('volume'))
+
+        # Store the parameters hari, start_date, and end_date in a JSON file
+        time = {
+            "hari": hari,
+            "start_date": start_date.strftime('%Y-%m-%d'),
+            "end_date": end_date.strftime('%Y-%m-%d')
+        }
+
+        with open('time.json', 'w') as file:
+            json.dump(time, file, indent=4)
 
         # Load stock symbols from JSON file
         with open('list-1.json') as file:
@@ -286,52 +164,68 @@ def perhitungan():
         for stock_symbol in stocks:
             try:
                 stock_data = yf.download(stock_symbol, start=start_date, end=end_date)
+                stock_name = yf.Ticker(stock_symbol).info.get('shortName', 'Unknown Name')
 
                 all_time_high = stock_data['Close'].max()
                 last_close = stock_data['Close'].iloc[-1]
                 start_date_close = stock_data['Close'][0]
+                volume_real = (stock_data['Close'] * stock_data['Volume']).mean()
+                deviasi = stock_data["Close"].std()
+                roc = ((last_close - start_date_close) / start_date_close) * 100
+                rocp = roc/hari 
+                deviasiper = (deviasi/last_close)* 100 
+                rocdev = (rocp / deviasiper) * 100 
 
-                
 
-                if last_close == all_time_high :
-                    roc = ((last_close - start_date_close) / start_date_close) * 100
-                    if roc >= min_roc:
-                        # Calculate the average closing price over the weeks
+
+                if last_close == all_time_high:
+                    if roc >= minimal_roc:
                         avg_close = stock_data['Close'].mean()
-                        if avg_close >= min_mean:
-                            lulus.append({
-                                "roc": roc,
-                                "kode_saham": stock_symbol,
-                                "harga_hari_ini": last_close,
-                                "harga_awal": start_date_close,
-                                "rata_rata": avg_close,  # Include average closing price
-                                "link_saham": f"https://finance.yahoo.com/quote/{stock_symbol}"
-                        })
+                        if avg_close >= minimal_roc:
+                            if volume_real > minimal_volume:
+                                lulus.append({
+                                    "roc": math.floor(roc),
+                                    "kode_saham": stock_symbol,
+                                    "volume": f"{math.floor(volume_real):,}",
+                                    "nama_saham": stock_name,
+                                    "harga_hari_ini": last_close,
+                                    "harga_awal": start_date_close,
+                                    "rata_rata": math.floor(avg_close),
+                                    "link_saham": f"https://finance.yahoo.com/quote/{stock_symbol}",
+                                    "deviasi":f"{(deviasi):.2f}",
+                                    "deviasiper":f"{(deviasiper ):.2f}",
+                                    "rocPerDev":f"{(deviasi):.2f}",
+                                    # "rocdev":f"{(((roc/hari)/deviasi)*100):.2f}",
+                                    "rocdev":f"{(rocdev):.2f}",
+                                    "rocp"   :f"{(rocp):.2f}",
+                                 
+                                })
             except Exception as e:
                 print(f"Failed to retrieve data for {stock_symbol}: {str(e)}")
 
         if lulus:
             df = pd.DataFrame(lulus)
             df.to_excel("stock_analysis.xlsx", index=False)
-
-            # Save the analysis results to a JSON file
             with open('stock_analysis.json', 'w') as file:
                 json.dump(lulus, file, indent=4)
 
-        return render_template('result.html', lulus=lulus, total=len(lulus), minggu=minggu)
+        return render_template('/Hasil/riwayat.html', lulus=lulus, total=len(lulus), hari=hari , time=time)
 
     return render_template('/Utama/perhitungan.html')
+
 
 # HASIL -------------------------------------------------------------------------------------------------------------------------------------------
 @app.route('/Hasil/riwayat')
 def riwayat():
     try:
         with open('stock_analysis.json') as file:
+            time = json.load(file)
+        with open('time.json') as file:
             lulus = json.load(file)
     except FileNotFoundError:
         lulus = []
     
-    return render_template('/Hasil/riwayat.html', lulus=lulus, total=len(lulus))
+    return render_template('/Hasil/riwayat.html', lulus=lulus, total=len(lulus), time=time)
 
 
 if __name__ == '__main__':

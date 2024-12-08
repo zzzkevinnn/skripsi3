@@ -23,5 +23,162 @@
             "price": 162.3
         }
     ],
-    "asdad": []
+    "asdad": [],
+    "test": [
+        {
+            "symbol": "sdfsf",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "dfsdfdsfs",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "aapl",
+            "name": "Apple Inc.",
+            "price": 0
+        },
+        {
+            "symbol": "googl",
+            "name": "Alphabet Inc.",
+            "price": 0
+        }
+    ],
+    "notes": [
+        {
+            "symbol": "dasdasd",
+            "name": "Unknown",
+            "price": 0
+        }
+    ],
+    "asdasdas": [
+        {
+            "symbol": "sgfsdg",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "asdasd",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "aapl",
+            "name": "Apple Inc.",
+            "price": 0
+        },
+        {
+            "symbol": "googl",
+            "name": "Alphabet Inc.",
+            "price": 0
+        }
+    ],
+    "44": [
+        {
+            "symbol": "asdasd",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "INDF.JK",
+            "name": "PT Indofood Sukses Makmur Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "AAPL.JK",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "aapl",
+            "name": "Apple Inc.",
+            "price": 0
+        },
+        {
+            "symbol": "ADRO.JK",
+            "name": "PT Alamtri Resources Indonesia Tbk",
+            "price": 0
+        }
+    ],
+    "profile 1": [
+        {
+            "symbol": "INDF.JK",
+            "name": "PT Indofood Sukses Makmur Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "ADRO.JK",
+            "name": "PT Alamtri Resources Indonesia Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "tlkm.jk",
+            "name": "Perusahaan Perseroan (Persero) PT Telekomunikasi Indonesia Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "bbca.jk",
+            "name": "PT Bank Central Asia Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "bbri.jk",
+            "name": "PT Bank Rakyat Indonesia (Persero) Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "bmri.jk",
+            "name": "PT Bank Mandiri (Persero) Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "unvr.jk",
+            "name": "PT Unilever Indonesia Tbk",
+            "price": 0
+        },
+        {
+            "symbol": "yiim.jk",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "yiim ",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "atsr.jk",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "assi.jk",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "assi",
+            "name": "Unknown",
+            "price": 0
+        },
+        {
+            "symbol": "fadfas",
+            "name": "Unknown",
+            "price": 0
+        }
+    ],
+    "asdasd": [
+        {
+            "symbol": "aapl",
+            "name": "Apple Inc.",
+            "price": 0
+        },
+        {
+            "symbol": "dsfd",
+            "name": "Unknown",
+            "price": 0
+        }
+    ]
 }

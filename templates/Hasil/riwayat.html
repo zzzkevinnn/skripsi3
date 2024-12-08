@@ -17,29 +17,62 @@
 
     <main class="container my-5">
         <h2 class="text-center mb-4">Daftar Saham</h2>
-        <table class="table table-bordered table-striped">
+
+        <p>Periode Hari : <b> {{time.hari}}</b></p>
+        <p>Tanggal Akhir:  <b>  {{time.end_date}}</b> </p> 
+        <p>Tanggal {{hari}} Hari kebelakang:  <b> {{time.start_date}} </b> </p> 
+
+        <table class="table table-bordered table-striped  justify-content-center">
             <thead class="table-dark">
                 <tr>
-                    <th>Code</th>
-                    <th>ROC</th>
-                    <th>Price Today</th>
-                    <th>Price Start</th>
+
+                    
+                    <th>Kode Saham</th>
+                    <th>Rata-Rata Nilai Transaksi</th>
+                    <th>ROC%</th>
+                    
+                    <!-- <th>Tanggal awal</th> -->
+                    <!-- <th>Rata-rata</th> -->
+                    <!-- <th>Deviasi</th> -->
+                    <th>ROC% Periode ({{hari}})</th>
+               
+                    <th>Deviasi</th>
+                    <th>Deviasi%</th>
+                    <th>ROC% Periode / Deviasi%</th>
+
+                    
+                    <th>Harga Awal</th>
+                    <th>Harga Akhir</th>
                     <th>Grafik</th>
                 </tr>
             </thead>
             <tbody>
                 {% for result in lulus %}
                 <tr>
+      
+              
                     <td>{{ result.kode_saham }}</td>
-                    <td>{{ result.roc }}</td>
-                    <td>{{ result.harga_hari_ini }}</td>
+                    <td>{{ result.volume }}</td>
+                    <td>{{ result.roc }} %</td>
+
+                    <!-- <td>{{result.awal}}</td> -->
+                    <!-- <td>{{ result.rata_rata }}</td> -->
+                    <td>{{result.rocp}} %</td>
+            
+                    <td>{{result.deviasi}} </td>  
+                    <td>{{result.deviasiper}} % </td>
+                    <td>{{result.rocdev}} %</td>
+
+                    
                     <td>{{ result.harga_awal }}</td>
+                    <td>{{ result.harga_hari_ini }}</td>
                     <td><a href="{{ result.link_saham }}" target="_blank" class="btn btn-sm btn-info">Grafik</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <p class="mt-3"><strong>Total Results:</strong> {{ total }}</p>
+        <p class="mt-3"><strong>Total Saham:</strong> {{ total }}</p>
+        
         <div class="text-center">
             <a href="{{ url_for('dashboard') }}" class="btn btn-primary mt-4">Kembali</a>
         </div>

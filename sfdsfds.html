@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Stock List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="text-white py-3 bg-primary">
+        <div class="container">
+            <h1 class="text-center">Edit Saham</h1>
+        </div>
+    </header>
+
+    <div class="container mt-5">
+        <h2>Saham saat ini:</h2>
+        <ul class="list-group">
+            {% for stock in stocks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ stock }}
+                <div class="d-flex">
+                    <!-- Edit Button -->
+                    <button type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editModal"
+                        data-stock="{{ stock }}" data-profile-name="{{ profile_name }}">Edit</button>
+                    
+                    <!-- Delete Button -->
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        data-stock="{{ stock }}" data-profile-name="{{ profile_name }}">Delete</button>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Edit Modal -->
+     
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" id="deleteStockForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Hapus Saham</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menghapus saham <strong id="stockToDelete"></strong>?</p>
+                        <input type="hidden" id="stock_to_delete" name="stock_to_delete">
+                        <input type="hidden" id="profile_name_delete" name="profile_name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Handle Edit Modal
+        const editModal = document.getElementById('editModal');
+        editModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            const stock = button.getAttribute('data-stock');
+            const profileName = button.getAttribute('data-profile-name');
+
+            const originalStockInput = document.getElementById('original_stock');
+            const updatedStockInput = document.getElementById('updated_stock');
+            const profileNameInput = document.getElementById('profile_name');
+
+            originalStockInput.value = stock;
+            updatedStockInput.value = stock;
+            profileNameInput.value = profileName;
+
+            const editForm = document.getElementById('editStockForm');
+            editForm.action = `/profile/${profileName}/edit/${stock}`;
+        });
+
+        // Handle Delete Modal
+        const deleteModal = document.getElementById('deleteModal');
+        deleteModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            const stock = button.getAttribute('data-stock');
+            const profileName = button.getAttribute('data-profile-name');
+
+            const stockToDeleteElement = document.getElementById('stockToDelete');
+            const stockToDeleteInput = document.getElementById('stock_to_delete');
+            const profileNameInput = document.getElementById('profile_name_delete');
+
+            stockToDeleteElement.textContent = stock;
+            stockToDeleteInput.value = stock;
+            profileNameInput.value = profileName;
+
+            const deleteForm = document.getElementById('deleteStockForm');
+            deleteForm.action = `/profile/${profileName}/delete/${stock}`;
+        });
+    </script>
+</body>
+</html>
